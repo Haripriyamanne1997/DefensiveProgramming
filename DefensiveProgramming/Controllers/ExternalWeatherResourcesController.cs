@@ -37,7 +37,7 @@ namespace DefensiveProgramming.Controllers
             }
             catch (HttpRequestException ex)
             {
-                return StatusCode(500, "Network error, please try again later");
+                return StatusCode(401, "User is Unauthorised.");
             }
             catch (TaskCanceledException)
             {

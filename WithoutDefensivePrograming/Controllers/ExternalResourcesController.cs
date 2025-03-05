@@ -24,13 +24,9 @@ namespace WithoutDefensivePrograming.Controllers
 
                 return Ok(response);
             }
-            catch (UnauthorizedAccessException unAuthorisedException)
-            {
-                return StatusCode(401, "User is Unauthorized.");
-            }
             catch (HttpRequestException ex)
             {
-                return StatusCode(503, "Weather service is unavailable.");
+                return StatusCode(401, "User is Unauthorised.");
             }
             catch (Exception ex)
             {
