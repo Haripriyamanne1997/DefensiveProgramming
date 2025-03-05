@@ -1,6 +1,5 @@
 ﻿using DefensivePrograming.Infrastructure.DataModels;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace DefensivePrograming.Infrastructure
 {

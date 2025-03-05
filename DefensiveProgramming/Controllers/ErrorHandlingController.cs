@@ -1,5 +1,7 @@
 ﻿using DefensivePrograming.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace DefensiveProgramming.Controllers
 {
@@ -23,11 +25,16 @@ namespace DefensiveProgramming.Controllers
                     return NotFound(new { message = "User not found" }); // Proper response
 
                 return Ok(user);
+            }            
+            catch (SqlException sqlException)
+            {
+                return StatusCode(500, new { message = "Service Unavailable.Please try again later" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An unexpected error occurred", error = ex.Message });
+                return StatusCode(500, new { message = "An unexpected error occurred" });
             }
+
         }
     }
 }
