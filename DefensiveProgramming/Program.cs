@@ -1,10 +1,11 @@
 using DefensivePrograming.Infrastructure;
 using DefensiveProgramming.Authentication;
+using DefensiveProgramming.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using WithDefensiveProgramingExamples.Middlewares;
+using DefensiveProgramming.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,7 @@ builder.Services.AddAuthentication(options =>
         }
     };
 });
+builder.Services.AddHttpClient();
 builder.Services.AddAuthorization();
 builder.Services.AddSingleton<JwtTokenGenerator>();
 var app = builder.Build();

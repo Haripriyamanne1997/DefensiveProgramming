@@ -1,7 +1,6 @@
 ﻿using DefensivePrograming.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
 
 namespace DefensiveProgramming.Controllers
 {
@@ -36,5 +35,16 @@ namespace DefensiveProgramming.Controllers
             }
 
         }
+
+        [HttpGet("info/{id}")]
+        public IActionResult GetUserInfo(int id)
+        {
+            var user = _dbContext.Users.Find(id);
+            if (user == null)
+                throw new Exception("User not found");
+
+            return Ok(user);
+        }
+            
     }
 }
