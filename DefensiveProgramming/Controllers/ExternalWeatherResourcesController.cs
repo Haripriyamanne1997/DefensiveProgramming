@@ -17,9 +17,10 @@ namespace DefensiveProgramming.Controllers
         }
 
         [HttpGet("{city}")]
+
         public async Task<IActionResult> GetWeather(string city)
         {
-            string url = $"https://api.weather.com/data?city={city}";
+            string url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={ApiKey}&units=metric";
 
             try
             {
@@ -35,7 +36,7 @@ namespace DefensiveProgramming.Controllers
                     return StatusCode((int)response.StatusCode, "Weather data unavailable");
                 }
             }
-            catch (HttpRequestException ex)
+            catch (HttpRequestException)
             {
                 return StatusCode(401, "User is Unauthorised.");
             }
@@ -44,6 +45,7 @@ namespace DefensiveProgramming.Controllers
                 return StatusCode(408, "Request timed out, please try again later");
             }
         }
+
     }
 
 }

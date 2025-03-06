@@ -19,7 +19,7 @@ namespace WithoutDefensivePrograming.Controllers
             try
             {
                 using HttpClient client = new HttpClient();
-                string url = $"https://api.weather.com/data?city={city}&apikey={ApiKey}";
+                string url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={ApiKey}&units=metric";
                 string response = await client.GetStringAsync(url);
 
                 return Ok(response);
